@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TI ONE Olkusz - części i maszyny dla przemysłu, obróbka metalu</title>
+<meta name="description" content="TI ONE Sp. z o.o. w Olkuszu: wycinanie laserowe, gięcie i walcowanie blach, obróbka CNC, spawanie, śrutowanie i malowanie. Części i zespoły maszyn, wykonawstwo, montaż i serwis urządzeń przemysłowych.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#202326">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/saira-rdzen.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/hero-1024.webp" imagesrcset="img/hero-640.webp 640w, img/hero-1024.webp 1024w, img/hero-1600.webp 1600w, img/hero-2000.webp 2000w" imagesizes="100vw" fetchpriority="high">
+<style>
+@font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-rdzen.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B0,U+00B7,U+00BB,U+00D3,U+00F3,U+2013,U+2018-2019,U+201C-201E,U+2022,U+2026}
+@font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/manrope-rdzen.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B0,U+00B2,U+00B7,U+00BB,U+00D3,U+00D7,U+00F3,U+2013-2014,U+2018-2019,U+201C-201E,U+2022,U+2026,U+20AC}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/manrope-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
+:root{--red:#ED1C24;--red-d:#C8141B;--ink:#202326;--ink2:#2A2E32;--txt:#25292D;--mut:#565E66;--gray:#EEF0F2;--line:#D7DBDF;--white:#FFFFFF;--m:clamp(16px,3vw,56px);--wrap:min(100% - 2*var(--m),1760px);--cut:20px;--h:"Saira",system-ui,sans-serif;--b:"Manrope",system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--txt);font:400 17px/1.6 var(--b);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--h);line-height:1.08;margin:0;color:var(--ink);letter-spacing:-.01em}
+h2{font-size:clamp(30px,3.4vw,52px);font-weight:700}
+h3{font-size:clamp(20px,1.5vw,24px);font-weight:650}
+p{margin:0 0 1em}
+.wrap{width:var(--wrap);margin-inline:auto}
+.sec{padding:clamp(64px,8vw,128px) 0}
+.lead{font-size:clamp(17px,1.25vw,20px);color:var(--mut);max-width:62ch}
+.cut{clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,0 100%)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;z-index:100;background:#fff;padding:8px 12px}
+
+/* przyciski - naroże ścięte jak detal z lasera */
+.btn{--cut:14px;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:54px;padding:0 28px;font:650 17px/1 var(--h);letter-spacing:.01em;text-decoration:none;border:0;cursor:pointer;clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,0 100%);transition:background-color .2s,color .2s}
+.btn-red{background:var(--red-d);color:#fff}.btn-red:hover{background:#A80F15}
+.btn-line{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85)}.btn-line:hover{background:#fff;color:var(--ink)}
+.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#000}
+.btn:focus-visible,.nav a:focus-visible,.arr:focus-visible,.ph:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* znak: TI + kołnierz zamiast O + NE */
+.brand{display:inline-flex;align-items:center;gap:.04em;font:800 28px/1 var(--h);letter-spacing:.04em;text-decoration:none;color:inherit;white-space:nowrap}
+.brand svg{width:.86em;height:.86em;color:var(--red);margin:0 .05em 0 .18em;flex:none}
+.brand-sub{display:block;font:500 11px/1.2 var(--b);letter-spacing:.02em;opacity:.8;margin-top:3px}
+
+/* nagłówek */
+.top{position:fixed;inset:0 0 auto 0;z-index:40;color:#fff;transition:background-color .25s,color .25s,box-shadow .25s}
+.top .in{width:var(--wrap);margin-inline:auto;display:flex;align-items:center;gap:24px;height:76px}
+.top.on{background:#fff;color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.top.on .btn-line{color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);background:transparent}
+.nav{display:flex;gap:clamp(14px,1.8vw,32px);margin-left:auto}
+.nav a{font:600 16px/1 var(--h);text-decoration:none;padding:8px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--red)}
+.top .tel{font:700 17px/1 var(--h);text-decoration:none;white-space:nowrap}
+.burger{display:none;margin-left:auto;width:48px;height:48px;border:0;background:transparent;cursor:pointer;position:relative}
+.burger span,.burger span::before,.burger span::after{position:absolute;left:12px;width:24px;height:2px;background:currentColor;content:"";transition:transform .2s}
+.burger span{top:23px}.burger span::before{left:0;top:-8px}.burger span::after{left:0;top:8px}
+.menu-open .burger span{background:transparent}.menu-open .burger span::before{transform:translateY(8px) rotate(45deg)}.menu-open .burger span::after{transform:translateY(-8px) rotate(-45deg)}
+
+/* pierwszy ekran */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:var(--ink);isolation:isolate}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(18,20,23,.88) 0%,rgba(18,20,23,.62) 46%,rgba(18,20,23,.12) 80%),linear-gradient(0deg,rgba(18,20,23,.7) 0%,rgba(18,20,23,0) 45%)}
+.hero .wrap{padding:120px 0 clamp(40px,8vh,96px)}
+.hero h1{color:#fff;font-size:clamp(34px,4.7vw,76px);font-weight:750;max-width:17ch;letter-spacing:-.015em}
+.hero h1 b{display:block;font-weight:500;color:#fff;font-size:.62em;margin-top:.35em;max-width:26ch;line-height:1.15}
+.hero p{font-size:clamp(17px,1.3vw,21px);max-width:54ch;margin:clamp(18px,2.4vh,28px) 0 0;color:rgba(255,255,255,.9)}
+.hero .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(26px,4vh,40px)}
+.cutline{position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--red);clip-path:polygon(0 0,calc(100% - 46px) 0,100% 100%,0 100%)}
+
+/* nagłówki sekcji z przewijanym pasem */
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,3.4vw,48px)}
+.shead .lead{margin:16px 0 0}
+.arrs{display:flex;gap:10px;flex:none}
+.arr{--cut:10px;width:52px;height:52px;border:0;background:var(--ink);color:#fff;cursor:pointer;display:grid;place-items:center;clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,0 100%)}
+.arr:disabled{background:var(--line);color:#8B9299;cursor:default}
+.arr svg{width:22px;height:22px}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:clamp(14px,1.4vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+.strip::-webkit-scrollbar{display:none}
+.strip.drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.strip .card{scroll-snap-align:start;margin:0;min-width:0}
+.ph{display:block;width:100%;padding:0;border:0;background:var(--gray);cursor:zoom-in;aspect-ratio:4/3;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.ph:hover img{transform:scale(1.03)}
+.card h3{margin:18px 0 8px}
+.card p{color:var(--mut);font-size:16px;margin:0;max-width:46ch}
+@media (min-width:700px){.strip{grid-auto-columns:62%}}
+@media (min-width:1000px){.strip{grid-auto-columns:42%}}
+@media (min-width:1280px){.strip{grid-auto-columns:calc((100% - 2*clamp(14px,1.4vw,24px))/3)}}
+@media (min-width:1700px){.strip{grid-auto-columns:calc((100% - 3*clamp(14px,1.4vw,24px))/4)}}
+
+/* oferta */
+.gray{background:var(--gray)}
+.offer{display:grid;gap:clamp(36px,3vw,48px);grid-template-columns:1fr}
+.of{display:flex;flex-direction:column;background:#fff}
+.of .ph{aspect-ratio:3/2}
+.of .tx{padding:clamp(22px,2vw,34px) clamp(20px,2vw,34px) clamp(26px,2.4vw,38px)}
+.of h3{font-size:clamp(22px,1.7vw,28px);margin-bottom:12px}
+.of p{color:var(--mut);margin:0 0 14px}
+.of ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.of li{display:flex;gap:10px;align-items:baseline;font-weight:600;font-size:16px}
+.of li svg{width:13px;height:13px;color:var(--red);flex:none;transform:translateY(1px)}
+@media (min-width:1000px){.offer{grid-template-columns:repeat(3,1fr)}}
+
+/* ciemna sekcja */
+.dark{background:var(--ink);color:#D5D9DD}
+.dark h2{color:#fff}
+.dark .grid{display:grid;gap:clamp(32px,4vw,72px);align-items:center}
+.dark p{max-width:60ch;font-size:clamp(17px,1.15vw,19px)}
+.dark strong{color:#fff}
+.dark .ph{aspect-ratio:4/3;background:var(--ink2)}
+.dark .facts{list-style:none;margin:28px 0 34px;padding:0;border-top:1px solid #3A3F45}
+.dark .facts li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid #3A3F45}
+.dark .facts b{font-family:var(--h);color:#fff;font-weight:650;min-width:9.5em}
+@media (min-width:1000px){.dark .grid{grid-template-columns:1.05fr 1fr}}
+@media (max-width:560px){.dark .facts li{flex-direction:column;gap:2px}}
+
+/* kariera */
+.job{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
+.job h2{font-size:clamp(26px,2.6vw,40px)}
+.job p{margin:12px 0 0;color:var(--mut);max-width:70ch}
+
+/* kontakt */
+.kgrid{display:grid;gap:clamp(36px,4vw,72px)}
+@media (min-width:1100px){.kgrid{grid-template-columns:.9fr 1.1fr}}
+.kdata{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:4px}
+.kdata li{padding:14px 0;border-bottom:1px solid var(--line)}
+.kdata span{display:block;font-size:14px;color:var(--mut)}
+.kdata a,.kdata strong{font:700 clamp(20px,1.6vw,26px)/1.3 var(--h);color:var(--ink);text-decoration:none}
+.kdata a:hover{color:var(--red-d)}
+.map{margin-top:28px;aspect-ratio:16/10;background:var(--gray);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map .mp{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-size:15px}
+form{background:var(--gray);padding:clamp(22px,3vw,48px)}
+form h3{font-size:clamp(24px,2vw,32px);margin-bottom:8px}
+form .note{color:var(--mut);font-size:15px;margin-bottom:22px}
+.fg{display:grid;gap:16px}
+@media (min-width:700px){.fg{grid-template-columns:1fr 1fr}.fg .full{grid-column:1/-1}}
+label{display:block;font-weight:700;font-size:15px;margin-bottom:6px;color:var(--ink)}
+input,select,textarea{width:100%;font:400 16px/1.4 var(--b);color:var(--txt);background:#fff;border:1px solid #C3C9CF;border-radius:0;padding:13px 14px;min-height:50px}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:0;border-color:transparent}
+input[type=file]{padding:10px;background:#fff}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--mut)}
+.chk input{width:20px;min-height:20px;height:20px;margin-top:2px;flex:none}
+form .btn{margin-top:22px}
+.ok{display:none;margin-top:16px;font-weight:700;color:var(--ink)}
+.ok.show{display:block}
+
+/* stopka */
+footer{background:var(--ink);color:#AEB4BA;padding:48px 0 28px;font-size:15px}
+footer .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+footer .brand{color:#fff;font-size:26px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+footer h4{font:650 15px/1.2 var(--h);color:#fff;margin:0 0 10px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer .bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:36px;padding-top:20px;border-top:1px solid #3A3F45}
+@media (min-width:900px){footer .cols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+@media (max-width:899px){footer .cols>div:first-child{grid-column:1/-1}}
+.wylinka-badge{display:inline-flex;align-items:center;gap:.4em;color:inherit;text-decoration:none;font-size:.875em;line-height:1;opacity:.85}
+.wylinka-badge:hover,.wylinka-badge:focus-visible{opacity:1}
+.wylinka-badge:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:2px}
+.wylinka-badge svg{width:18px;height:18px;flex:none;overflow:visible}
+.wylinka-badge b{font-weight:600}
+.wylinka-badge .wy-old{opacity:.45;transform-origin:40px 30px;transition:transform .32s cubic-bezier(.3,.7,.4,1),opacity .32s ease-out}
+.wylinka-badge .wy-pod{opacity:0;transition:opacity .2s ease-out .08s}
+.wylinka-badge:hover .wy-old,.wylinka-badge:focus-visible .wy-old{transform:translate(9px,7px) rotate(9deg);opacity:0}
+.wylinka-badge:hover .wy-pod,.wylinka-badge:focus-visible .wy-pod{opacity:1}
+@media (prefers-reduced-motion:reduce){.wylinka-badge .wy-old,.wylinka-badge .wy-pod{transition:none}.wylinka-badge:hover .wy-old,.wylinka-badge:focus-visible .wy-old{transform:none;opacity:.45}.wylinka-badge:hover .wy-pod,.wylinka-badge:focus-visible .wy-pod{opacity:0}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(14,16,18,.95);display:none;align-items:center;justify-content:center;flex-direction:column;padding:56px 16px 20px}
+.lb.open{display:flex}
+.lb img{max-width:min(100%,1400px);max-height:calc(100svh - 140px);width:auto;height:auto;object-fit:contain}
+.lb .cap{color:#E6E8EA;margin-top:14px;text-align:center;font-size:15px}
+.lb button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;width:52px;height:52px;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:var(--red-d)}
+.lb .x{top:12px;right:12px}.lb .pv{left:12px;top:50%;transform:translateY(-50%)}.lb .nx{right:12px;top:50%;transform:translateY(-50%)}
+.lb svg{width:24px;height:24px}
+
+/* telefon */
+@media (max-width:1099px){
+ .nav,.top .tel,.top .btn{display:none}
+ .burger{display:block}
+ .menu-open .top{background:#fff;color:var(--ink)}
+ .menu-open .nav{display:flex;position:fixed;top:76px;left:0;right:0;bottom:0;flex-direction:column;gap:0;background:#fff;padding:12px var(--m) 32px;overflow-y:auto;margin:0}
+ .menu-open .nav a{font-size:24px;padding:16px 0;border-bottom:1px solid var(--line)}
+ .menu-open .nav .mtel{display:block;margin-top:20px;color:var(--red-d);border:0}
+ .menu-open{overflow:hidden}
+}
+.nav .mtel{display:none}
+@media (max-width:699px){
+ .shead{flex-direction:column;align-items:flex-start}
+ .shead .arrs{display:none}
+ .hero::before{background:linear-gradient(0deg,rgba(18,20,23,.92) 0%,rgba(18,20,23,.72) 55%,rgba(18,20,23,.35) 100%)}
+ .hero .acts .btn{flex:1 1 100%}
+ .brand{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="kol" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M2 24a22 22 0 1 0 44 0a22 22 0 1 0 -44 0zM16 24a8 8 0 1 0 16 0a8 8 0 1 0 -16 0zM34.6 31.5a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0zM21.6 39a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0zM8.6 31.5a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0zM8.6 16.5a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0zM21.6 9a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0zM34.6 16.5a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0z"/></symbol>
+ <symbol id="ar" viewBox="0 0 32 32"><path d="M6 16h18M17 8l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></symbol>
+</svg>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<header class="top" id="top">
+ <div class="in">
+  <a class="brand" href="#" aria-label="TI ONE - strona główna">TI<svg aria-hidden="true"><use href="#kol"/></svg>NE</a>
+  <nav class="nav" id="nav" aria-label="Menu główne">
+   <a href="#uslugi">Usługi</a>
+   <a href="#oferta">Oferta</a>
+   <a href="#realizacje">Realizacje</a>
+   <a href="#firma">O firmie</a>
+   <a href="#kariera">Kariera</a>
+   <a href="#kontakt">Kontakt</a>
+   <a class="mtel" href="tel:+48327065395">tel. 32 706 53 95</a>
+  </nav>
+  <a class="tel" href="tel:+48327065395">32 706 53 95</a>
+  <a class="btn btn-line" href="#kontakt" style="min-height:46px;padding:0 20px;font-size:16px">Zapytanie</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Otwórz menu"><span></span></button>
+ </div>
+</header>
+
+<main id="tresc">
+<section class="hero">
+ <picture><img src="img/hero-1024.webp" srcset="img/hero-640.webp 640w, img/hero-1024.webp 1024w, img/hero-1600.webp 1600w, img/hero-2000.webp 2000w" sizes="100vw" width="2000" height="1500" alt="Toczone elementy maszyn wykonane w TI ONE" fetchpriority="high" decoding="async"></picture>
+ <div class="wrap">
+  <h1>Części i maszyny dla przemysłu w Olkuszu <b>od arkusza blachy do gotowego urządzenia</b></h1>
+  <p>Wycinamy, gniemy, toczymy, spawamy i malujemy w jednym zakładzie. Części i zespoły maszyn wykonujemy według Państwa dokumentacji lub własnego projektu - urządzenia także dostarczamy, montujemy i serwisujemy.</p>
+  <div class="acts">
+   <a class="btn btn-red" href="#kontakt">Wyślij zapytanie</a>
+   <a class="btn btn-line" href="tel:+48327065395">Zadzwoń: 32 706 53 95</a>
+  </div>
+ </div>
+ <span class="cutline" aria-hidden="true"></span>
+</section>
+
+<section class="sec" id="uslugi">
+ <div class="wrap shead">
+  <div>
+   <h2>Cała obróbka w jednym zakładzie</h2>
+   <p class="lead">Mamy maszyny do każdego etapu: od wycięcia detalu z blachy, przez gięcie, toczenie i spawanie, po śrutowanie i malowanie. Dzięki temu urządzenie dedykowane wykonujemy w pełnym zakresie produkcyjnym.</p>
+  </div>
+  <div class="arrs"><button class="arr" data-dir="-1" aria-label="Poprzednie usługi" style="transform:scaleX(-1)"><svg><use href="#ar"/></svg></button><button class="arr" data-dir="1" aria-label="Następne usługi"><svg><use href="#ar"/></svg></button></div>
+ </div>
+ <div class="wrap">
+  <div class="strip" data-lb="uslugi">
+    <article class="card">
+     <button class="ph cut" data-big="img/u-laser-big.webp" data-cap="Wycinanie laserowe" aria-label="Powiększ zdjęcie: Wycinanie laserowe"><img src="img/u-laser-480.webp" srcset="img/u-laser-480.webp 480w, img/u-laser-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Wycinanie laserowe - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Wycinanie laserowe</h3>
+     <p>Dokładność do 0,1 mm, gładka krawędź bez naruszenia materiału i ta sama jakość w każdej sztuce serii - także przy skomplikowanych kształtach i otworach.</p>
+    </article>
+    <article class="card">
+     <button class="ph cut" data-big="img/u-giecie-big.webp" data-cap="Gięcie blach" aria-label="Powiększ zdjęcie: Gięcie blach"><img src="img/u-giecie-480.webp" srcset="img/u-giecie-480.webp 480w, img/u-giecie-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Gięcie blach - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Gięcie blach</h3>
+     <p>Krawędziarki, zaginarki krawędziowe i prasy hydrauliczne. Regulowany nacisk pozwala giąć cienkie i grube blachy z precyzyjnym kątem.</p>
+    </article>
+    <article class="card">
+     <button class="ph cut" data-big="img/u-walcowanie-big.webp" data-cap="Walcowanie blach" aria-label="Powiększ zdjęcie: Walcowanie blach"><img src="img/u-walcowanie-480.webp" srcset="img/u-walcowanie-480.webp 480w, img/u-walcowanie-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Walcowanie blach - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Walcowanie blach</h3>
+     <p>Kształtowanie blach walcami - materiały o różnej grubości, kształt i wymiar według potrzeb. Jedno ustawienie maszyny wystarcza na całą serię o stałym promieniu.</p>
+    </article>
+    <article class="card">
+     <button class="ph cut" data-big="img/u-cnc-big.webp" data-cap="Obróbka skrawaniem CNC" aria-label="Powiększ zdjęcie: Obróbka skrawaniem CNC"><img src="img/u-cnc-480.webp" srcset="img/u-cnc-480.webp 480w, img/u-cnc-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Obróbka skrawaniem CNC - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Obróbka skrawaniem CNC</h3>
+     <p>Frezowanie i toczenie na maszynach sterowanych numerycznie: skomplikowane powierzchnie, precyzyjne krzywizny i bryły obrotowe.</p>
+    </article>
+    <article class="card">
+     <button class="ph cut" data-big="img/u-spawanie-big.webp" data-cap="Spawanie" aria-label="Powiększ zdjęcie: Spawanie"><img src="img/u-spawanie-480.webp" srcset="img/u-spawanie-480.webp 480w, img/u-spawanie-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Spawanie - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Spawanie</h3>
+     <p>Metody TIG, MIG i MAG - od bardzo cienkich blach po konstrukcje w dowolnych kształtach. Technikę dobieramy do każdego projektu.</p>
+    </article>
+    <article class="card">
+     <button class="ph cut" data-big="img/u-srut-big.webp" data-cap="Obróbka strumieniowo-ścierna" aria-label="Powiększ zdjęcie: Obróbka strumieniowo-ścierna"><img src="img/u-srut-480.webp" srcset="img/u-srut-480.webp 480w, img/u-srut-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Obróbka strumieniowo-ścierna - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Obróbka strumieniowo-ścierna</h3>
+     <p>Śrutowanie (piaskowanie): usuwanie rdzy, starych powłok, zadziorów i śladów po paleniu oraz przygotowanie powierzchni do malowania.</p>
+    </article>
+    <article class="card">
+     <button class="ph cut" data-big="img/u-malowanie-big.webp" data-cap="Malowanie" aria-label="Powiększ zdjęcie: Malowanie"><img src="img/u-malowanie-480.webp" srcset="img/u-malowanie-480.webp 480w, img/u-malowanie-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Malowanie - zdjęcie z produkcji TI ONE" loading="lazy" decoding="async"></button>
+     <h3>Malowanie</h3>
+     <p>Malowanie powierzchni metalowych po oczyszczeniu strumieniowo-ściernym i ocenie profilu powierzchni - trwałe zabezpieczenie antykorozyjne.</p>
+    </article>
+  </div>
+ </div>
+</section>
+
+<section class="sec gray" id="oferta">
+ <div class="wrap">
+  <div class="shead"><div>
+   <h2>Oferta dla zakładów produkcyjnych</h2>
+   <p class="lead">Wykonujemy pojedyncze części, całe zespoły i kompletne urządzenia - a gdy maszyna stanie, zajmujemy się jej naprawą.</p>
+  </div></div>
+  <div class="offer" data-lb="oferta">
+   <article class="of">
+    <button class="ph cut" data-big="img/o-czesci-900.webp" data-cap="Kołnierze po obróbce skrawaniem" aria-label="Powiększ zdjęcie: części maszyn"><img src="img/o-czesci-560.webp" srcset="img/o-czesci-560.webp 560w, img/o-czesci-900.webp 900w" sizes="(min-width:1000px) 31vw, 92vw" width="900" height="675" alt="Kołnierze po obróbce skrawaniem" loading="lazy" decoding="async"></button>
+    <div class="tx">
+     <h3>Części i zespoły maszyn i urządzeń</h3>
+     <p>Części zamienne, zespoły maszyn i specjalistyczne urządzenia dla zakładów produkcyjnych. Pracujemy na dokumentacji dostarczonej przez klienta albo przygotowujemy własną dokumentację konstrukcyjną.</p>
+     <ul><li><svg aria-hidden="true"><use href="#kol"/></svg>Według rysunku klienta lub własnego projektu</li><li><svg aria-hidden="true"><use href="#kol"/></svg>Zgodnie z normami krajowymi i UE</li></ul>
+    </div>
+   </article>
+   <article class="of">
+    <button class="ph cut" data-big="img/o-wykonawstwo-900.webp" data-cap="Urządzenia po malowaniu, przed wysyłką" aria-label="Powiększ zdjęcie: wykonawstwo urządzeń"><img src="img/o-wykonawstwo-560.webp" srcset="img/o-wykonawstwo-560.webp 560w, img/o-wykonawstwo-900.webp 900w" sizes="(min-width:1000px) 31vw, 92vw" width="900" height="675" alt="Niebieskie urządzenia po malowaniu, przed wysyłką" loading="lazy" decoding="async"></button>
+    <div class="tx">
+     <h3>Wykonawstwo, montaż i dostawa urządzeń</h3>
+     <p>Budujemy urządzenia dla przemysłu, dostarczamy je i montujemy. Maszyny produkowane w TI ONE są objęte wieloletnią gwarancją, a przy każdym zleceniu służymy doradztwem.</p>
+     <ul><li><svg aria-hidden="true"><use href="#kol"/></svg>Wykonanie, dostawa i montaż</li><li><svg aria-hidden="true"><use href="#kol"/></svg>Dokumentacja techniczna</li></ul>
+    </div>
+   </article>
+   <article class="of">
+    <button class="ph cut" data-big="img/o-serwis-900.webp" data-cap="Linia technologiczna w hali" aria-label="Powiększ zdjęcie: serwis urządzeń"><img src="img/o-serwis-560.webp" srcset="img/o-serwis-560.webp 560w, img/o-serwis-900.webp 900w" sizes="(min-width:1000px) 31vw, 92vw" width="900" height="675" alt="Linia technologiczna w hali zakładu" loading="lazy" decoding="async"></button>
+    <div class="tx">
+     <h3>Serwis urządzeń przemysłowych</h3>
+     <p>Nagła awaria? Nasza ekipa serwisowa szybko znajdzie źródło problemu i zajmie się naprawą. Wykonujemy też całościowe i częściowe remonty maszyn.</p>
+     <ul><li><svg aria-hidden="true"><use href="#kol"/></svg>Przeglądy, konserwacje i naprawy</li><li><svg aria-hidden="true"><use href="#kol"/></svg>Modernizacje i automatyzacje</li><li><svg aria-hidden="true"><use href="#kol"/></svg>Diagnostyka, pomiary, przeglądy okresowe</li></ul>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="sec dark" id="firma">
+ <div class="wrap grid">
+  <div>
+   <h2>Od 2005 roku w Olkuszu</h2>
+   <p style="margin-top:22px">Od 2005 roku wykonujemy części i zespoły maszyn, budujemy i montujemy urządzenia dla przemysłu oraz serwisujemy maszyny w zakładach produkcyjnych. Realizujemy projekty dla klientów z Polski i z zagranicy.</p>
+   <p>Nasze części trafiają do zakładów z wielu różnych gałęzi przemysłu. Konstruktorzy pracują w programach wspomagania projektowania, więc rysunek, model albo sam opis potrzeby to wystarczający początek rozmowy.</p>
+   <ul class="facts">
+    <li><b>Dokumentacja</b><span>Państwa rysunki lub nasza własna dokumentacja konstrukcyjna</span></li>
+    <li><b>Spawanie</b><span>TIG, MIG i MAG, od cienkich blach po konstrukcje</span></li>
+    <li><b>Ostatni etap</b><span>śrutowanie, malowanie, dostawa i montaż u klienta</span></li>
+   </ul>
+   <a class="btn btn-red" href="#kontakt">Prześlij rysunek do wyceny</a>
+  </div>
+  <button class="ph cut" data-big="img/hala-1200.webp" data-cap="Przenośnik rolkowy w hali montażowej" aria-label="Powiększ zdjęcie hali"><img src="img/hala-720.webp" srcset="img/hala-720.webp 720w, img/hala-1200.webp 1200w" sizes="(min-width:1000px) 46vw, 92vw" width="1200" height="900" alt="Przenośnik rolkowy z napędem w hali montażowej" loading="lazy" decoding="async"></button>
+ </div>
+</section>
+
+<section class="sec" id="realizacje">
+ <div class="wrap shead">
+  <div>
+   <h2>Z naszej produkcji</h2>
+   <p class="lead">Części, zespoły i urządzenia wykonane w TI ONE. Kliknij zdjęcie, żeby je powiększyć.</p>
+  </div>
+  <div class="arrs"><button class="arr" data-dir="-1" aria-label="Poprzednie zdjęcia" style="transform:scaleX(-1)"><svg><use href="#ar"/></svg></button><button class="arr" data-dir="1" aria-label="Następne zdjęcia"><svg><use href="#ar"/></svg></button></div>
+ </div>
+ <div class="wrap">
+  <div class="strip" data-lb="galeria">
+    <figure class="card"><button class="ph cut" data-big="img/g1-big.webp" data-cap="Element maszyny w żółtym malowaniu" aria-label="Powiększ zdjęcie: Element maszyny w żółtym malowaniu"><img src="img/g1-480.webp" srcset="img/g1-480.webp 480w, img/g1-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Element maszyny w żółtym malowaniu" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g2-big.webp" data-cap="Stalowe stojaki na lawecie, gotowe do transportu" aria-label="Powiększ zdjęcie: Stalowe stojaki na lawecie, gotowe do transportu"><img src="img/g2-480.webp" srcset="img/g2-480.webp 480w, img/g2-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Stalowe stojaki na lawecie, gotowe do transportu" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g3-big.webp" data-cap="Urządzenia załadowane na naczepę do wysyłki" aria-label="Powiększ zdjęcie: Urządzenia załadowane na naczepę do wysyłki"><img src="img/g3-480.webp" srcset="img/g3-480.webp 480w, img/g3-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Urządzenia załadowane na naczepę do wysyłki" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g4-big.webp" data-cap="Obudowy łożysk po obróbce" aria-label="Powiększ zdjęcie: Obudowy łożysk po obróbce"><img src="img/g4-480.webp" srcset="img/g4-480.webp 480w, img/g4-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Obudowy łożysk po obróbce" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g5-big.webp" data-cap="Elementy po obróbce skrawaniem" aria-label="Powiększ zdjęcie: Elementy po obróbce skrawaniem"><img src="img/g5-480.webp" srcset="img/g5-480.webp 480w, img/g5-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Elementy po obróbce skrawaniem" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g6-big.webp" data-cap="Przyrząd z prowadnicami liniowymi" aria-label="Powiększ zdjęcie: Przyrząd z prowadnicami liniowymi"><img src="img/g6-480.webp" srcset="img/g6-480.webp 480w, img/g6-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Przyrząd z prowadnicami liniowymi" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g7-big.webp" data-cap="Przyrząd montażowy ze stali nierdzewnej" aria-label="Powiększ zdjęcie: Przyrząd montażowy ze stali nierdzewnej"><img src="img/g7-480.webp" srcset="img/g7-480.webp 480w, img/g7-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Przyrząd montażowy ze stali nierdzewnej" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g8-big.webp" data-cap="Szafy z blachy przed wysyłką" aria-label="Powiększ zdjęcie: Szafy z blachy przed wysyłką"><img src="img/g8-480.webp" srcset="img/g8-480.webp 480w, img/g8-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Szafy z blachy przed wysyłką" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g9-big.webp" data-cap="Pierścienie w niebieskich obudowach" aria-label="Powiększ zdjęcie: Pierścienie w niebieskich obudowach"><img src="img/g9-480.webp" srcset="img/g9-480.webp 480w, img/g9-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Pierścienie w niebieskich obudowach" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g10-big.webp" data-cap="Koła zębate i korpus przekładni" aria-label="Powiększ zdjęcie: Koła zębate i korpus przekładni"><img src="img/g10-480.webp" srcset="img/g10-480.webp 480w, img/g10-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Koła zębate i korpus przekładni" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g11-big.webp" data-cap="Stanowisko z profili aluminiowych z pneumatyką" aria-label="Powiększ zdjęcie: Stanowisko z profili aluminiowych z pneumatyką"><img src="img/g11-480.webp" srcset="img/g11-480.webp 480w, img/g11-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Stanowisko z profili aluminiowych z pneumatyką" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g12-big.webp" data-cap="Korpus maszyny po malowaniu" aria-label="Powiększ zdjęcie: Korpus maszyny po malowaniu"><img src="img/g12-480.webp" srcset="img/g12-480.webp 480w, img/g12-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Korpus maszyny po malowaniu" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g13-big.webp" data-cap="Maszyna rolnicza w czerwonym malowaniu" aria-label="Powiększ zdjęcie: Maszyna rolnicza w czerwonym malowaniu"><img src="img/g13-480.webp" srcset="img/g13-480.webp 480w, img/g13-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Maszyna rolnicza w czerwonym malowaniu" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g14-big.webp" data-cap="Konstrukcje stalowe na samochodzie" aria-label="Powiększ zdjęcie: Konstrukcje stalowe na samochodzie"><img src="img/g14-480.webp" srcset="img/g14-480.webp 480w, img/g14-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Konstrukcje stalowe na samochodzie" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g15-big.webp" data-cap="Toczone kołnierze na palecie" aria-label="Powiększ zdjęcie: Toczone kołnierze na palecie"><img src="img/g15-480.webp" srcset="img/g15-480.webp 480w, img/g15-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Toczone kołnierze na palecie" loading="lazy" decoding="async"></button></figure>
+    <figure class="card"><button class="ph cut" data-big="img/g16-big.webp" data-cap="Zbiornik z mieszadłem" aria-label="Powiększ zdjęcie: Zbiornik z mieszadłem"><img src="img/g16-480.webp" srcset="img/g16-480.webp 480w, img/g16-800.webp 800w" sizes="(min-width:1700px) 22vw, (min-width:1280px) 30vw, (min-width:1000px) 42vw, (min-width:700px) 62vw, 84vw" width="800" height="600" alt="Zbiornik z mieszadłem" loading="lazy" decoding="async"></button></figure>
+  </div>
+ </div>
+</section>
+
+<section class="sec gray" id="kariera" style="padding:clamp(48px,6vw,88px) 0">
+ <div class="wrap job">
+  <div>
+   <h2>Praca w TI ONE</h2>
+   <p>Zatrudniamy zarówno osoby doświadczone, jak i młode, które dopiero zdobywają doświadczenie. Nie ma oferty dla Ciebie? Zostaw nam swoje CV - mailowo albo telefonicznie.</p>
+  </div>
+  <a class="btn btn-ink" href="mailto:info@ti-one.pl?subject=CV">Wyślij CV</a>
+ </div>
+</section>
+
+<section class="sec" id="kontakt">
+ <div class="wrap kgrid">
+  <div>
+   <h2>Kontakt</h2>
+   <p class="lead" style="margin-top:16px">Opisz, czego potrzebujesz, albo dołącz rysunek - odpowiemy z terminem i wyceną.</p>
+   <ul class="kdata">
+    <li><span>Telefon</span><a href="tel:+48327065395">32 706 53 95</a></li>
+    <li><span>E-mail</span><a href="mailto:info@ti-one.pl">info@ti-one.pl</a></li>
+    <li><span>Adres</span><strong>al. 1000-lecia 1K, 32-300 Olkusz</strong></li>
+   </ul>
+   <div class="map" id="map" data-src="https://maps.google.com/maps?q=al.%201000-lecia%201K%2C%2032-300%20Olkusz&amp;z=15&amp;output=embed"><span class="mp">Mapa wczytuje się po przewinięciu</span></div>
+  </div>
+  <form id="form" novalidate>
+   <h3>Zapytanie ofertowe</h3>
+   <p class="note">Formularz pokazowy - w tym podglądzie nie wysyła wiadomości.</p>
+   <div class="fg">
+    <div><label for="f1">Imię i nazwisko</label><input id="f1" name="n" autocomplete="name"></div>
+    <div><label for="f2">Firma</label><input id="f2" name="f" autocomplete="organization"></div>
+    <div><label for="f3">E-mail</label><input id="f3" name="e" type="email" autocomplete="email"></div>
+    <div><label for="f4">Telefon</label><input id="f4" name="t" type="tel" autocomplete="tel"></div>
+    <div class="full"><label for="f5">Czego dotyczy zapytanie</label><select id="f5" name="s"><option>Wycinanie, gięcie, walcowanie blach</option><option>Obróbka CNC</option><option>Spawanie, śrutowanie, malowanie</option><option>Części i zespoły maszyn</option><option>Wykonawstwo i montaż urządzenia</option><option>Serwis lub awaria</option></select></div>
+    <div class="full"><label for="f6">Wiadomość</label><textarea id="f6" name="m" placeholder="Materiał, grubość, liczba sztuk, termin..."></textarea></div>
+    <div class="full"><label for="f7">Rysunek lub dokumentacja (opcjonalnie)</label><input id="f7" name="z" type="file"></div>
+    <div class="full"><label class="chk"><input type="checkbox"> Zgadzam się na przetwarzanie danych w celu obsługi zapytania przez TI ONE Sp. z o.o.</label></div>
+   </div>
+   <button class="btn btn-red" type="submit">Wyślij zapytanie</button>
+   <p class="ok" id="ok" role="status">To podgląd - formularz zadziała na docelowej stronie.</p>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="cols">
+   <div>
+    <a class="brand" href="#" aria-label="TI ONE">TI<svg aria-hidden="true"><use href="#kol"/></svg>NE</a>
+    <p style="margin:12px 0 0">TI ONE Sp. z o.o.<br>al. 1000-lecia 1K, 32-300 Olkusz</p>
+   </div>
+   <div><h4>Kontakt</h4><ul><li><a href="tel:+48327065395">tel. 32 706 53 95</a></li><li><a href="mailto:info@ti-one.pl">info@ti-one.pl</a></li></ul></div>
+   <div><h4>Usługi</h4><ul><li><a href="#uslugi">Wycinanie laserowe</a></li><li><a href="#uslugi">Gięcie i walcowanie</a></li><li><a href="#uslugi">Obróbka CNC</a></li><li><a href="#uslugi">Spawanie i malowanie</a></li></ul></div>
+   <div><h4>Firma</h4><ul><li><a href="#oferta">Oferta</a></li><li><a href="#realizacje">Realizacje</a></li><li><a href="#kariera">Kariera</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+  </div>
+  <div class="bot">
+   <span>&copy; 2026 TI ONE Sp. z o.o.</span>
+   <a class="wylinka-badge" href="https://wylinka.pl/?utm_source=ti-one.pl&amp;utm_medium=stopka&amp;utm_campaign=wykonanie" rel="noopener" title="Strona wykonana przez Wylinka"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="currentColor"><path d="M9.8 22.8l-1.2-7.9 2.2-3.7 15.5 4.6-.5 1.5-7.2 5.5 4.7 15.6 5-15.6 7 0 4.1 12.7-4.2-.9-2.6 1.8-.8-2.2-5.3 15.6-4.3 0 .4 .2-2.1 2.8-1.3-1.1 1.1-1.4-3.1 .2-.1-1.7 2.2-.1-5.7-16.5-4.8 .6-.8 3.1 0 .5-.3 .5 .8 2.2-1.6 .5-.4-1.3-.8 1.6-1.5-.8 .8-1.6-1.4 .6-.6-1.6 2.3-.8 .2-.4 1.3-4.8 5.9-.8-2.4-6.9zM15.2 13.7l-.1-.4-.4 .8-.1 .8 .1 1 .1 .4 .3 .7 .3-.9 .1-.7 0-.8z"/><path class="wy-pod" d="M37.1 49.8l-4.5-13.3 2.6-1.8 4.2 .9 .9 2.8 3-9.7 0-.5 .1-.8 3.2-8.4 .5-1 .6-1 .9-1.1 1.3-1 1.1-.7 1.4-.5 1.4-.3 .7 0 .9 0 1.2 .3 1.4 .6 .8 .5 .7 .7 .6 .7 .5 .9 .3 .9 .1 .9 0 .8-.2 .9-.5 .9-.5 .6-.7 .5-.7 .3-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.6-.1-.6-.3-.7-.4-.5-.4-.4-.5-.3-.6-.3-.7 0-.7 .1-.6 .1-.5 .4-.5 .5-.3 .5-.2 .7-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1-2.1-2.8 .4-.2z"/><path class="wy-old" d="M40.8 50l.4-.2-4.1 0-4.2-12.5 2.5-1.7 4.3 .9 .6 1.9 .6-1.6 0-.3 2.4-7.8 0-.5 .1-.8 3.2-8.4 .4-.8 .6-.9 .9-1.2 .9-.9 1.3-.8 1.4-.6 1.2-.3 1.4-.1 1.3 .1 .6 .2 .8 .3 1.1 .6 .9 .7 .7 .9 .5 .9 .3 .9 .1 1.1-.1 .9-.3 .9-.4 .7-.6 .7-.6 .4-.6 .2-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.5-.1-.6-.2-.6-.3-.5-.4-.5-.5-.3-.6-.3-.7-.1-.6 0-.6 .1-.6 .3-.6 .5-.3 .4-.2 .5-.1 .5-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1zM49.6 17.1l.6 1.7-1.5 1.9 .4 .4 1.8-2.1-.7-2.1zM48.1 28.3l.5 1.8-1.7 1.8 .4 .4 1.9-2-.6-2.2zM37.9 41.7l1.7-1.5-.4-.4-1.7 1.4zM42.6 38.7l-1.5 2.8 1.1 2-1.3 2.6 .5 .2 1.5-2.8-1.1-2 1.4-2.5z"/></svg><span>wykonanie: <b>Wylinka</b></span></a>
+  </div>
+ </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie">
+ <button class="x" aria-label="Zamknij"><svg viewBox="0 0 32 32"><path d="M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="2.6" fill="none"/></svg></button>
+ <button class="pv" aria-label="Poprzednie zdjęcie" style="transform:translateY(-50%) scaleX(-1)"><svg><use href="#ar"/></svg></button>
+ <img id="lbi" alt="">
+ <p class="cap" id="lbc"></p>
+ <button class="nx" aria-label="Następne zdjęcie"><svg><use href="#ar"/></svg></button>
+</div>
+
+<script>
+(function(){
+var top=document.getElementById('top'),b=document.body;
+function sc(){top.classList.toggle('on',scrollY>40)}sc();addEventListener('scroll',sc,{passive:true});
+var bu=document.getElementById('burger');
+bu.addEventListener('click',function(){var o=b.classList.toggle('menu-open');bu.setAttribute('aria-expanded',o);bu.setAttribute('aria-label',o?'Zamknij menu':'Otwórz menu')});
+document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('menu-open');bu.setAttribute('aria-expanded',false)})});
+
+/* pasy zdjęć: strzałki, przeciąganie myszą */
+document.querySelectorAll('.strip').forEach(function(s){
+ var sec=s.closest('section'),arrs=sec.querySelectorAll('.arr');
+ function step(){var c=s.querySelector('.card');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(s).columnGap||16):300}
+ function upd(){if(!arrs.length)return;arrs[0].disabled=s.scrollLeft<4;arrs[1].disabled=s.scrollLeft+s.clientWidth>=s.scrollWidth-4}
+ arrs.forEach(function(a){a.addEventListener('click',function(){s.scrollBy({left:step()*(+a.dataset.dir),behavior:'smooth'})})});
+ s.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+ var down=false,x0=0,l0=0,moved=false;
+ s.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;x0=e.clientX;l0=s.scrollLeft});
+ addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-x0;if(Math.abs(dx)>5&&!moved){moved=true;s.classList.add('drag')}if(moved){s.scrollLeft=l0-dx;e.preventDefault()}});
+ addEventListener('pointerup',function(){if(!down)return;down=false;if(moved){var w=step(),t=Math.round(s.scrollLeft/w)*w;s.classList.remove('drag');s.scrollTo({left:t,behavior:'smooth'})}});
+ s.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+ s.addEventListener('dragstart',function(e){e.preventDefault()});
+});
+
+/* lightbox */
+var lb=document.getElementById('lb'),li=document.getElementById('lbi'),lc=document.getElementById('lbc'),list=[],idx=0,last=null;
+function show(i){idx=(i+list.length)%list.length;var el=list[idx],im=el.querySelector('img');li.src=im.currentSrc||im.src;li.alt=im.alt;lc.textContent=el.dataset.cap+'  ('+(idx+1)+'/'+list.length+')';var big=new Image();big.onload=function(){if(list[idx]===el)li.src=el.dataset.big};setTimeout(function(){big.src=el.dataset.big},150)}
+document.querySelectorAll('.ph[data-big]').forEach(function(el){el.addEventListener('click',function(){var g=el.closest('[data-lb]');list=g?[].slice.call(g.querySelectorAll('.ph[data-big]')):[el];last=el;lb.classList.add('open');b.style.overflow='hidden';show(list.indexOf(el));lb.querySelector('.x').focus()})});
+function close(){lb.classList.remove('open');b.style.overflow='';li.removeAttribute('src');if(last)last.focus()}
+lb.querySelector('.x').onclick=close;lb.querySelector('.pv').onclick=function(){show(idx-1)};lb.querySelector('.nx').onclick=function(){show(idx+1)};
+lb.addEventListener('click',function(e){if(e.target===lb)close()});
+addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1)});
+var tx=0;lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(idx+(d<0?1:-1))});
+
+/* mapa po przewinięciu */
+var m=document.getElementById('map');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){io.disconnect();var f=document.createElement('iframe');f.src=m.dataset.src;f.title='Mapa dojazdu - TI ONE, Olkusz';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';m.appendChild(f)}},{rootMargin:'300px'});io.observe(m)}
+
+document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').classList.add('show')});
+})();
+</script>
+</body>
+</html>
