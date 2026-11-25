@@ -1,3 +1,5 @@
 *.part
 build.py
 src.html
+_zrodla/
+_material/
